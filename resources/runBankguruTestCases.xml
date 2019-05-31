@@ -2,7 +2,7 @@
 <suite name="BANKGURU" parallel="false">
   <test name="Run on firefox">
     <classes>
-      <class name="com.bankguru.account.Account_Level_02_ApplyAbstractPage"/>
+      <class name="com.bankguru.account.Account_Level_03_PageObject"/>
     </classes>
   </test> 
 </suite>

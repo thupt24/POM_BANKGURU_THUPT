@@ -74,6 +74,7 @@ public class AbstractPage {
 		element = driver.findElement(By.xpath(locator));
 		element.submit();
 	}
+
 	public void sendKeyToElement(WebDriver driver, String locator, String value) {
 		element = driver.findElement(By.xpath(locator));
 		element.sendKeys(value);
@@ -242,12 +243,6 @@ public class AbstractPage {
 		action.dragAndDrop(sourceElement, targetElement).perform();
 	}
 
-	public void sendkeyBroadToElement(WebDriver driver, String locator, Keys tab) {
-		element = driver.findElement(By.xpath(locator));
-		action = new Actions(driver);
-		action.sendKeys(element, tab).perform();
-	}
-
 	public void sendKeyBoardToElement(WebDriver driver, String locator, Keys key) {
 		element = driver.findElement(By.xpath(locator));
 		action = new Actions(driver);
@@ -317,4 +312,5 @@ public class AbstractPage {
 		waitExplicit = new WebDriverWait(driver, longTimeout);
 		waitExplicit.until(ExpectedConditions.alertIsPresent());
 	}
+
 }
