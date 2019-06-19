@@ -2,45 +2,40 @@ package pageObject;
 
 import org.openqa.selenium.WebDriver;
 
+import bankguru.AbstractPageUI;
 import bankguru.LoginPageUI;
 import commons.AbstractPage;
+import commons.PageFactoryManage;
 
-public class LoginPageObject extends AbstractPage{
-	private WebDriver driver;
-	public LoginPageObject(WebDriver mappingDriver) {
-		this.driver = mappingDriver;
-	}
+public class LoginPageObject extends AbstractPage {
+    private WebDriver driver;
 
-	public boolean isLoginFormDisplayed() {
-		waitForElementVisible(driver, LoginPageUI.LOGIN_FORM);
-		return isControlDisplayed(driver, LoginPageUI.LOGIN_FORM);
-	
-	}
+    public LoginPageObject(WebDriver mappingDriver) {
+	this.driver = mappingDriver;
+    }
 
-	public String getLoginPageUrl() {
-		return getCurrentUrl(driver);
-	}
+    public boolean isLoginFormDisplayed() {
+	waitForElementVisible(driver, LoginPageUI.LOGIN_FORM);
+	return isControlDisplayed(driver, LoginPageUI.LOGIN_FORM);
 
-	public void clickToHereLink() {
-		waitForElementVisible(driver, LoginPageUI.HERE_LINK);
-		clickToElement(driver, LoginPageUI.HERE_LINK);
-		
-	}
+    }
 
-	public void sendKeyToUserIdTexbox(String userIdInfo) {
-		waitForElementVisible(driver, LoginPageUI.USER_ID_TEXTBOX);
-		sendKeyToElement(driver, LoginPageUI.USER_ID_TEXTBOX, userIdInfo);
-		
-	}
+    public String getLoginPageUrl() {
+	return getCurrentUrl(driver);
+    }
 
-	public void sendKeyToPasswordInfoTexbox(String passWordInfo) {
-		waitForElementVisible(driver, LoginPageUI.PASSWORD_TEXTBOX);
-        sendKeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, passWordInfo);		
-	}
+    public RegisterPageObject clickToHereLink() {
+	waitForElementVisible(driver, LoginPageUI.HERE_LINK);
+	clickToElement(driver, LoginPageUI.HERE_LINK);
+	return PageFactoryManage.getRegisterPage(driver);
 
-	public void clickToLoginButton() {
-		waitForElementVisible(driver, LoginPageUI.LOGIN_BUTTON);
-        clickToElement(driver, LoginPageUI.LOGIN_BUTTON);		
-	}
+    }
+
+    public HomePageObject clickToLoginButton() {
+	waitForElementVisible(driver, AbstractPageUI.DYNAMIC_TEXTBOX_BUTTON_CHECKBOX,"btnLogin");
+	clickToElement(driver, AbstractPageUI.DYNAMIC_TEXTBOX_BUTTON_CHECKBOX,"btnLogin");
+	return PageFactoryManage.getHomePage(driver);
+
+    }
 
 }

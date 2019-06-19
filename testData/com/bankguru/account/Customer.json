@@ -1,0 +1,11 @@
+{
+	"customerName": "Teriann Bussons",
+	"gender" : "male",
+	"dateOfBirth": "1994-01-09",
+	"address": "309 Susan Park",
+	"city": "Atlanta",
+	"state": "Georgia",
+	"pin": "111111",
+	"phone": "6787962786",
+	"passWord" : "123456789"
+}

@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="BANKGURU" parallel="false">
-  <test name="Run on firefox">
-    <classes>
-      <class name="com.bankguru.account.Account_Level_03_PageObject"/>
-    </classes>
-  </test> 
+<suite name="BANKGURU" parallel="flase">
+
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+		<listener class-name="commons.ExtentReportListener" />
+		<listener class-name="commons.RetryListener" />
+
+	</listeners>
+	<test name="Run on firefox">
+		<parameter name="brower" value="firefox" />
+		<parameter name="customer" value=".//testData/com/bankguru/account/Customer.json" />
+		<parameter name="editCustomer" value=".//testData/com/bankguru/account/EditCustomer.json" />
+		<!-- <classes> <class name="com.bankguru.payment.RegisterPage" /> <class name="com.bankguru.customer.NewCustomer" /> </classes> -->
+		<classes>
+
+			<class name="com.bankguru.payment.RegisterPage" />
+			<class name="com.bankguru.payment.Payment" />
+		</classes>
+
+	</test>
+
+	<!-- <test name="Run on chrome"> <parameter name="brower" value="chrome" /> <classes> <class name = "com.bankguru.account.Account_Level_06_MultiBrower_ParallelTesting"/> </classes> </test> <test name="Run 
+		on chromeheadless"> <parameter name="brower" value="chromeheadless" /> <classes> <class name = "com.bankguru.account.Account_Level_06_MultiBrower_ParallelTesting"/> </classes> </test> -->
+
 </suite>
