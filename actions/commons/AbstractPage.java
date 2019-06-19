@@ -100,6 +100,15 @@ public class AbstractPage {
 	element.clear();
 	element.sendKeys(valueToSendKey);
     }
+    
+    public void sendKeyToElementVerify(WebDriver driver, String locator, String valueToSendKey,String... values) {
+   	locator = String.format(locator, (Object[]) values);
+   	highlightElement(driver, locator);
+   	element = driver.findElement(By.xpath(locator));
+   	element.clear();
+   	element.sendKeys(valueToSendKey);
+   	element.sendKeys(Keys.TAB);
+       }
 
     public void selectItemInDropdown(WebDriver driver, String locator, String value) {
 	element = driver.findElement(By.xpath(locator));
@@ -499,7 +508,11 @@ public class AbstractPage {
 	waitForElementVisible(driver, AbstractPageUI.DYNAMIC_TEXTBOX_BUTTON_CHECKBOX, feildName);
 	sendKeyToElement(driver, AbstractPageUI.DYNAMIC_TEXTBOX_BUTTON_CHECKBOX, value, feildName);
     }
-
+ 
+    public void sendKeyToDynamicTextboxTextAreaVerify(WebDriver driver, String feildName, String value) {
+	waitForElementVisible(driver, AbstractPageUI.DYNAMIC_TEXTBOX_BUTTON_CHECKBOX, feildName);
+	sendKeyToElementVerify(driver, AbstractPageUI.DYNAMIC_TEXTBOX_BUTTON_CHECKBOX, value, feildName);
+    }
     public String getDynamicErrorMessage(WebDriver driver, String feildName) {
 	waitForElementVisible(driver, AbstractPageUI.DYNAMIC_ERROR_MESSAGE, feildName);
 	return getTextElement(driver, AbstractPageUI.DYNAMIC_ERROR_MESSAGE, feildName);
